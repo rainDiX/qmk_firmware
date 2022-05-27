@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 100
 
-#define OLED_TIMEOUT 24000
+#define OLED_TIMEOUT 20000
 #define OLED_FADE_OUT 1
 
 #undef RGBLED_NUM
