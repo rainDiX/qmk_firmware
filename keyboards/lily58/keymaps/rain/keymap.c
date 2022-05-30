@@ -20,7 +20,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
  LSFT_T(KC_GRV),  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,  KC_LBRC,           KC_RBRC,   KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_BSLS),
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┴───┐ ┌───┴────┬───┴────┬───┴────┬───┴────┬───┴────────┴────────┴────────┘
-                                      KC_LALT, KC_LGUI,   TG(1),  KC_SPC,    KC_ENT,  TG(2), KC_BSPC,  KC_RALT
+                                      KC_LALT, KC_LGUI,   TO(1),  KC_SPC,    KC_ENT,  TO(2), KC_BSPC,  KC_RALT
     //                               └────────┴────────┴────────┘────────┘ └────────┴────────┴────────┴────────┘
     ),
     /* Lower layer: */
@@ -34,21 +34,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
        KC_TILD, _______, _______, _______, _______, _______, KC_LCBR,           KC_RCBR, KC_QUES, KC_PIPE,  KC_LT,   KC_GT,  KC_COLN, KC_DQUO,
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┴───┐ ┌───┴────┬───┴────┬───┴────┬───┴────┬───┴────────┴────────┴────────┘
-                                      _______, _______, _______, _______,   _______,  TO(3),  KC_DEL,  _______
+                                      _______, _______, _______, _______,   _______,  TO(0),  KC_DEL,  _______
     //                               └────────┴────────┴────────┘────────┘ └────────┴────────┴────────┴────────┘
     ),
     /* Raise layer: */
     [_RAISE] = LAYOUT(
     //┌────────┬────────┬────────┬────────┬────────┬────────┐                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
-       _______,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                               KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+        KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                               KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10, KC_VOLD,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                           ├────────┼────────┼────────┼────────┼────────┼────────┤
-       _______,  KC_NO,   KC_NO,   KC_END, KC_AGIN, KC_BRIU,                             KC_COPY, KC_UNDO,  KC_INS, KC_EXEC, KC_PASTE, KC_F12,
+        KC_F12,  TO(3),   KC_NO,   KC_END, KC_AGIN, KC_BRIU,                             KC_COPY, KC_UNDO,  KC_INS, KC_EXEC, KC_PASTE,KC_VOLU,
     //├────────┼────────┼────────┼────────┼────────┼────────┤                           ├────────┼────────┼────────┼────────┼────────┼────────┤
-       _______,  KC_NO,   KC_NO,   KC_CUT,  KC_NO,  KC_BRID,                             KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT, KC_MPLY, KC_PSCR,
+       _______,  KC_NO,   KC_NO,   KC_CUT,  KC_NO,  KC_BRID,                             KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT,  _______, KC_PSCR,
     //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-       KC_LSFT, KC_WBAK, KC_WFWD, KC_CALC, KC_SLCT, KC_HOME, KC_PGUP,           KC_PGDN, KC_VOLD, KC_VOLU, KC_MPRV, KC_MNXT, KC_FIND, KC_RSFT,
+       KC_LSFT, KC_WBAK, KC_WFWD, KC_CALC, KC_SLCT, KC_HOME, KC_PGUP,           KC_PGDN, KC_MPLY, KC_MUTE, KC_MPRV, KC_MNXT, KC_FIND, KC_RSFT,
     //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┴───┐ ┌───┴────┬───┴────┬───┴────┬───┴────┬───┴────────┴────────┴────────┘
-                                      _______, _______,  TO(3),  _______,   _______, _______,  KC_DEL,  _______
+                                      _______, _______,  TO(0),  _______,   _______, _______, KC_BSPC,  _______
     //                               └────────┴────────┴────────┘────────┘ └────────┴────────┴────────┴────────┘
     ),
     /* GAME layer: */
@@ -67,10 +67,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // clang-format on
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _GAME);
-}
 
 // SSD1306 OLED update loop, make sure to enable OLED_ENABLE=yes in rules.mk
 #ifdef OLED_ENABLE
