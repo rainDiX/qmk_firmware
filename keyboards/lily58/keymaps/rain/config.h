@@ -27,12 +27,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MASTER_RIGHT
 // #define EE_HANDS
 
-#define TAPPING_TOGGLE 2
-//#define TAPPING_FORCE_HOLD
-//#define TAPPING_TERM 100
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 180
 
 #define OLED_TIMEOUT 30000
 #define OLED_FADE_OUT 1
+#define OLED_BRIGHTNESS 31
 
 #undef RGBLED_NUM
 #define RGBLIGHT_ANIMATIONS
@@ -49,3 +49,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_ANIMATIONS
 #define RGBLIGHT_SLEEP
 */
+
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+#define LAYER_STATE_8BIT
+#define NO_MUSIC_MODE
